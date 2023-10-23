@@ -1,0 +1,111 @@
+<html>
+ <head>
+        <script src="script.js"></script>
+    </head>
+    <body>
+        <input type="text" id="numberA" value="0">
+        <uy id = "display">+</uy>
+        <input type="text" id="numberB" value="0">
+            <label for="operation">Choose operation:</label>
+            <select name="operation" id="operation" onchange="zmien()">
+                <option value="+">+</option>
+                <option value="-">-</option>
+                <option value="/">/</option>
+                <option value="*">*</option>
+                <option value="%">%</option>
+                <option value="**">**</option>
+                <option value="√">√</option>
+                <option value="n!">n!</option>
+                <option value="log2">log2</option>
+                <option value="√n">√n</option>
+                </select>
+            <br><br>
+
+            <input type="submit" value="Submit" onclick="add()">
+
+            <p id = "ans">Wynik= </p>
+        </body>
+        <script>
+            function zmien() {
+                var operation = document.getElementById("operation").value;
+                var display = document.getElementById("display");
+                var a = document.getElementById("numberA");
+                display.innerText = operation;
+
+                if (operation == "√") {
+                    a.hidden = true;
+                }
+                else if (operation == "n!") {
+                    a.hidden = true;
+                }
+                else if (operation == "log2") {
+                    a.hidden = true;
+                }
+                else {
+                    a.hidden = false;
+                }
+            }
+
+            function add() {
+                document.getElementById("ans").innerText = "Wynik=";
+                var operation = document.getElementById("operation").value;
+                var a = document.getElementById("numberA").value;
+                var b = document.getElementById("numberB").value;
+
+                if (operation == "+") {
+                    var odp = Number(a) + Number(b);
+                    document.getElementById("ans").innerText += odp;
+                }
+                
+                if (operation == "-") {
+                    var odp = Number(a) - Number(b);
+                    document.getElementById("ans").innerText += odp;
+                }
+
+                if (operation == "/") {
+                    if (b == 0){
+                        document.getElementById("ans").innerText = "Nie dziel przez 0!";
+                    }
+                    else {
+                        var odp = Number(a) / Number(b);
+                        document.getElementById("ans").innerText += odp;
+                    }
+                }
+
+                if (operation == "*") {
+                    var odp = Number(a) * Number(b);
+                    document.getElementById("ans").innerText += odp;
+                }
+
+                if (operation == "%") {
+                    var odp = Number(a) % Number(b);
+                    document.getElementById("ans").innerText += odp;
+                }
+
+                if (operation == "**") {
+                    var odp = Number(a) ** Number(b);
+                    document.getElementById("ans").innerText += odp;
+                }
+
+                if (operation == "√") {
+                    var odp = Math.sqrt(Number(b));
+                    document.getElementById("ans").innerText += odp;
+                }
+
+                if (operation == "n!") {
+                    var odp = Number(b) * (Number(b) - 1);
+                    document.getElementById("ans").innerText += odp;
+                }
+
+                if (operation == "log2") {
+                    var odp = Math.log2(Number(b));
+                    document.getElementById("ans").innerText += odp;
+                }
+
+                if (operation == "√n") {
+                    var odp = a ** (1 / b);
+                    document.getElementById("ans").innerText += odp;
+                }
+            }
+    </script>
+</html>
